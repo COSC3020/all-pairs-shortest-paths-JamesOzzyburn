@@ -26,3 +26,6 @@ test code from other exercises.
 
 What is the worst-case time complexity ($\Theta$) of the algorithm? Add your
 answer, including your reasoning, to this markdown file.
+
+## Runtime Analysis Answer
+I believe that the worst possible time complexity would be $\Theta (V^3)$ where V is the number of verticies. I believe this because we have to go through each vertex $k\in V$ and with each $k$ we have to go through each vertex $i\in V$ and for each $i$ we have to go through each vertex $j\in V$. So that leaves us with $(k * i * j)$ and each of their lengths is V we can substitute to get $(V * V * V)$ which is just $V^3$. So thats what get us to $\Theta (V^3)$.
