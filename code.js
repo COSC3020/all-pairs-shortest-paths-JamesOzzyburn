@@ -1,20 +1,22 @@
 function allPairsShortestPaths(graph) {
     //Step 1 in the directions
-    let dist = Array(graph.length,graph.length).fill(Infinity);
-
-    for(let u = 0; u < dist.length; u++) {
-        //If there is only one element set it to the only element in graph
-        if(dist[u].length == 1) {
-            dist[u][u] = graph[u][u];
+    var dist = [];
+    for (let i = 0; i < graph.length; i++) {
+        dist[i] = [];
+        for (let j = 0; j < graph.length; j++) {
+            dist[i][j] = Infinity;
         }
-        //Step 2 in the directions
-        else dist[u][u] = 0;
+    }
 
-        for(let v = 0; v < dist.length; v++) {
+    for(let u = 0; u < graph.length; u++) {
+        //Step 2 in the directions
+        dist[u][u] = 0;
+
+        for(let v = 0; v < graph[u].length; v++) {
             //Step 3 in the directions
             //Check if the edge exists
             if(graph != Infinity) {
-                dist[u][v] = graph[u][v];
+                dist[u][graph[u][v][0]] = graph[u][v][1];
             }
         }
     }
@@ -26,7 +28,7 @@ function allPairsShortestPaths(graph) {
             //Step 4.c
             for(let j = 0; j < dist.length; j++) {
                 //Step 4.d
-                if(dist[i][j] < (dist[i][k] + dist[k][j])) {
+                if(dist[i][j] > (dist[i][k] + dist[k][j])) {
                     dist[i][j] = dist[i][k] + dist[k][j]
                 }
             }
